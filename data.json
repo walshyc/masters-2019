@@ -1,0 +1,29 @@
+[
+    {
+        "name": "Conor Walsh",
+        "id": "1",
+        "picks": [
+            "Dustin Johnson",
+            "Phil Mickelson",
+            "Thomas Pieters"
+        ]
+    },
+    {
+        "name": "Martin Clarke",
+        "id": "2",
+        "picks": [
+            "Tiger Woods",
+            "Rory McIlroy",
+            "Matt Kuchar"
+        ]
+    },
+    {
+        "name": "Brian Fahey",
+        "id": "3",
+        "picks": [
+            "Jason Day",
+            "Justin Rose",
+            "Bubba Watson"
+        ]
+    }
+]
