@@ -1,10 +1,8 @@
-var entries = [];
-var scores = []
+var scores = [];
 
 
 var picks = [{
         "name": "Conor Walsh",
-        "id": "1",
         "selections": [
             "Jonathan Byrd",
             "Matt Kuchar",
@@ -13,7 +11,6 @@ var picks = [{
     },
     {
         "name": "Martin Clarke",
-        "id": "2",
         "selections": [
             "Jim Furyk",
             "Padraig Harrington",
@@ -22,44 +19,92 @@ var picks = [{
     },
     {
         "name": "Brian Fahey",
-        "id": "3",
         "selections": [
             "Jhonattan Vegas",
             "Abraham Ancer",
             "Martin Kaymer"
         ]
+    },
+    {
+        "name": "Peter Dravins",
+        "selections": [
+            "Chesson Hadley",
+            "Fabián Gómez",
+            "Scott Stallings"
+        ]
+    },
+    {
+        "name": "Gary Corbett",
+        "selections": [
+            "Wyndham Clark",
+            "Hank Lebioda",
+            "Danny Lee"
+        ]
+    },
+    {
+        "name": "Fergal Murphy",
+        "selections": [
+            "Jason Kokrak",
+            "K.J. Choi",
+            "Morgan Hoffmann"
+        ]
     }
 ];
 
 
-$.getJSON('scores.json', function (data) {
+$.getJSON('https://golf.jacoduplessis.co.za/?format=json', function (data) {
     var totalScore;
+    // console.log(data.Leaderboards[1].Tournament);
 
-    function getScores(name,pickOne, pickTwo, pickThree) {
-        for (i = 0; i < data.Leaderboards[0].Players.length; i++) {
+    function getScores(name, pickOne, pickTwo, pickThree) {
+        if (data.Leaderboards[0].Tournament == "Valero Texas Open") {
+            for (a = 0; a < data.Leaderboards[0].Players.length; a++) {
 
-            if (data.Leaderboards[0].Players[i].Name === pickOne) {
-                var pickOneScore = data.Leaderboards[0].Players[i].Total;
-                console.log(pickOneScore);
+                if (data.Leaderboards[0].Players[a].Name === pickOne) {
+                    var pickOneScore = data.Leaderboards[0].Players[a].Total;
+                }
 
+                if (data.Leaderboards[0].Players[a].Name === pickTwo) {
+                    var pickTwoScore = data.Leaderboards[0].Players[a].Total;
+                }
+
+                if (data.Leaderboards[0].Players[a].Name === pickThree) {
+                    var pickThreeScore = data.Leaderboards[0].Players[a].Total;
+                }
             }
+        } else if (data.Leaderboards[1].Tournament == "Valero Texas Open") {
+            for (a = 0; a < data.Leaderboards[1].Players.length; a++) {
 
-            if (data.Leaderboards[0].Players[i].Name === pickTwo) {
-                var pickTwoScore = data.Leaderboards[0].Players[i].Total;
-                console.log(pickTwoScore);
+                if (data.Leaderboards[1].Players[a].Name === pickOne) {
+                    var pickOneScore = data.Leaderboards[1].Players[a].Total;
+                }
 
+                if (data.Leaderboards[1].Players[a].Name === pickTwo) {
+                    var pickTwoScore = data.Leaderboards[1].Players[a].Total;
+                }
 
+                if (data.Leaderboards[1].Players[a].Name === pickThree) {
+                    var pickThreeScore = data.Leaderboards[1].Players[a].Total;
+                }
             }
+        } else if (data.Leaderboards[2].Tournament == "Valero Texas Open") {
+            for (a = 0; a < data.Leaderboards[2].Players.length; a++) {
 
-            if (data.Leaderboards[0].Players[i].Name === pickThree) {
-                var pickThreeScore = data.Leaderboards[0].Players[i].Total;
-                console.log(pickThreeScore);
+                if (data.Leaderboards[2].Players[a].Name === pickOne) {
+                    var pickOneScore = data.Leaderboards[2].Players[a].Total;
+                }
+
+                if (data.Leaderboards[2].Players[a].Name === pickTwo) {
+                    var pickTwoScore = data.Leaderboards[2].Players[a].Total;
+                }
+
+                if (data.Leaderboards[2].Players[a].Name === pickThree) {
+                    var pickThreeScore = data.Leaderboards[2].Players[a].Total;
+                }
             }
         }
-    
 
         totalScore = pickOneScore + pickTwoScore + pickThreeScore;
-        console.log(totalScore);
         var obj = [];
         obj["name"] = name;
         obj["pickOne"] = pickOne;
@@ -70,11 +115,15 @@ $.getJSON('scores.json', function (data) {
         obj["pickThreeScore"] = pickThreeScore;
         obj["score"] = totalScore;
         scores.push(obj);
-        
+
     }
 
-    getScores(picks[0].name,picks[0].selections[0], picks[0].selections[1], picks[0].selections[2]);
-    getScores(picks[1].name,picks[1].selections[0], picks[1].selections[1], picks[1].selections[2]);
+
+    for (i = 0; i < picks.length; i++) {
+        getScores(picks[i].name, picks[i].selections[0], picks[i].selections[1], picks[i].selections[2]);
+    }
+    // getScores(picks[0].name,picks[0].selections[0], picks[0].selections[1], picks[0].selections[2]);
+    // getScores(picks[1].name,picks[1].selections[0], picks[1].selections[1], picks[1].selections[2]);
     for (i = 0; i < scores.length; i++) {
 
         $("#scoreboard-row").append(
@@ -83,7 +132,7 @@ $.getJSON('scores.json', function (data) {
 			<td colspan="2" class="entry">${scores[i].name}</td>
 			<td class="entry">${scores[i].score}</td>
 		</tr>
-		<tr class="hide-row">
+		<tr class="hide-row info-row">
 			<td>${scores[i].pickOne} ${scores[i].pickOneScore}</td>
 			<td>${scores[i].pickTwo} ${scores[i].pickTwoScore}</td>
 			<td>${scores[i].pickThree} ${scores[i].pickThreeScore}</td>
@@ -92,12 +141,11 @@ $.getJSON('scores.json', function (data) {
         );
     }
 
-    $(".entry").click(function (e) { 
+    $(".entry").click(function (e) {
         e.preventDefault();
         $(this).closest('tr').next().toggle("hide-row");
-    
+
     });
 
 
 });
-
