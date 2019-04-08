@@ -79,13 +79,24 @@ $.getJSON('scores.json', function (data) {
 
         $("#scoreboard-row").append(
             `
-            <tr>  
-			<td >${scores[i].name}</td>
-			<td >${scores[i].score}</td>
-		    </tr>
-                `
+            <tr>
+			<td colspan="2" class="entry">${scores[i].name}</td>
+			<td class="entry">${scores[i].score}</td>
+		</tr>
+		<tr class="hide-row">
+			<td>${scores[i].pickOne} ${scores[i].pickOneScore}</td>
+			<td>${scores[i].pickTwo} ${scores[i].pickTwoScore}</td>
+			<td>${scores[i].pickThree} ${scores[i].pickThreeScore}</td>
+		</tr>
+            `
         );
     }
+
+    $(".entry").click(function (e) { 
+        e.preventDefault();
+        $(this).closest('tr').next().toggle("hide-row");
+    
+    });
 
 
 });
