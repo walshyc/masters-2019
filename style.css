@@ -1,33 +1,49 @@
-body{
+body {
     font-family: 'Nunito', sans-serif;
 }
 
-.text-underline{
+.text-underline {
     border-bottom: 1px black solid
 }
 
-.table-header{
+.table-header {
     background-color: #04694A;
     color: #F7F4F0;
 }
 
-.page-header{
-    
+.page-header {
     height: 15vh;
     background-image: url(masters.gif);
     background-repeat: no-repeat;
     background-position: center;
 }
 
-table.table-bordered{
-    border:1px solid #3C3C3B;
-    margin-top:20px;
-  }
-table.table-bordered > thead > tr > th{
-    border:1px solid #3C3C3B;
+table.table-bordered {
+    border: 1px solid #3C3C3B;
+    margin-top: 20px;
 }
-table.table-bordered > tbody > tr > td{
-    border:1px solid #3C3C3B;
+
+table.table-bordered>thead>tr>th {
+    border: 1px solid #3C3C3B;
 }
-table.table-bordered > tbody > tr > th{
-    border:1px solid #3C3C3B;
+
+table.table-bordered>tbody>tr>td {
+    border: 1px solid #3C3C3B;
+}
+
+table.table-bordered>tbody>tr>th {
+    border: 1px solid #3C3C3B;
+}
+
+#scoreboard {
+    table-layout: auto;
+    width: 100%
+}
+
+.hide-row{
+    display: none;
+}
+
+.small-text {
+    font-size: 8px;
+}

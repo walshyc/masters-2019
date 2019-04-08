@@ -4,31 +4,26 @@
         "id": "1",
         "picks": [
             "Keith Mitchell",
-            "RAHM, Jon",
-            "FITZPATRICK, Matthew"
-        ],
-        "ids": [
-            "25572",
-            "RAHM, Jon",
-            "FITZPATRICK, Matthew"
+            "Matt Kuchar",
+            "Rickie Fowler"
         ]
     },
     {
         "name": "Martin Clarke",
         "id": "2",
         "picks": [
-            "DAY, Jason",
-            "SNEDEKER, Brandt",
-            "SPIETH, Jordan"
+            "Jim Furyk",
+            "Jordan Spieth",
+            "Aaron Baddeley"
         ]
     },
     {
         "name": "Brian Fahey",
         "id": "3",
         "picks": [
-            "WOODS, Tiger",
-            "REED, Patrick",
-            "GRACE, Branden"
+            "Jhonattan Vegas",
+            "Abraham Ancer",
+            "Martin Kaymer"
         ]
     }
 ]
