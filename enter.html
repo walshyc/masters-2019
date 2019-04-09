@@ -5,9 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Masters 2019</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+    <title>Masters 2019 Entry</title>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
         integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -26,29 +30,35 @@
             <form id="enter-form" action="https://formspree.io/conorwalsh0703@gmail.com" method="POST" >
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="name" class="form-control" id="name" placeholder="Enter name">
+                    <input type="name" class="form-control" id="name" placeholder="Enter name" name="entry-name">
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1">Golfer 1</label>
-                    <select class="form-control" id="entryOne">
+                    <label for="entryOne">Golfer 1</label>
+                    <select class="form-control" id="entryOne" name="golfer-one">
                         <option value="Golfer 1" selected></option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1">Golfer 2</label>
-                    <select class="form-control" id="entryTwo">
+                    <label for="entryTwo">Golfer 2</label>
+                    <select class="form-control" id="entryTwo" name="golfer-two">
                         <option value="Golfer 2" selected></option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1">Golfer 3</label>
-                    <select class="form-control" id="entryThree">
+                    <label for="entryThree">Golfer 3</label>
+                    <select class="form-control" id="entryThree" name="golfer-three">
                         <option value="Golfer 3" selected></option>
                     </select>
                 </div>
+
+                <div class="form-group">
+                    <label for="tiebracker">Tiebraker</label>
+                    <input type="number" class="form-control" id="tiebracker" placeholder="Par = 288" name="tiebracker" min="250" max = "300">
+                </div>
+
                 <button type="submit" class="btn btn-enter">Submit</button>
             </form>
         </div>

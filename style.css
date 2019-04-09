@@ -47,7 +47,7 @@ table.table-bordered>tbody>tr>th {
 
 .info-row {
     font-size: 10px;
-    background-color: #04694A;
+    background-color: #04694A!important;
     color: #F7F4F0
 }
 

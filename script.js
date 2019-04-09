@@ -1,7 +1,7 @@
 var scores = [];
 
 
-var picks = [{
+var piks = [{
         "name": "Conor Walsh",
         "selections": [
             "Jonathan Byrd",
@@ -57,7 +57,7 @@ $.getJSON('https://golf.jacoduplessis.co.za/?format=json', function (data) {
     // console.log(data.Leaderboards[1].Tournament);
 
     function getScores(name, pickOne, pickTwo, pickThree) {
-        if (data.Leaderboards[0].Tournament == "Valero Texas Open") {
+        if (data.Leaderboards[0].Tournament == "The Masters") {
             for (a = 0; a < data.Leaderboards[0].Players.length; a++) {
 
                 if (data.Leaderboards[0].Players[a].Name === pickOne) {
@@ -72,7 +72,7 @@ $.getJSON('https://golf.jacoduplessis.co.za/?format=json', function (data) {
                     var pickThreeScore = data.Leaderboards[0].Players[a].Total;
                 }
             }
-        } else if (data.Leaderboards[1].Tournament == "Valero Texas Open") {
+        } else if (data.Leaderboards[1].Tournament == "The Masters") {
             for (a = 0; a < data.Leaderboards[1].Players.length; a++) {
 
                 if (data.Leaderboards[1].Players[a].Name === pickOne) {
@@ -87,7 +87,7 @@ $.getJSON('https://golf.jacoduplessis.co.za/?format=json', function (data) {
                     var pickThreeScore = data.Leaderboards[1].Players[a].Total;
                 }
             }
-        } else if (data.Leaderboards[2].Tournament == "Valero Texas Open") {
+        } else if (data.Leaderboards[2].Tournament == "The Masters") {
             for (a = 0; a < data.Leaderboards[2].Players.length; a++) {
 
                 if (data.Leaderboards[2].Players[a].Name === pickOne) {
@@ -105,6 +105,7 @@ $.getJSON('https://golf.jacoduplessis.co.za/?format=json', function (data) {
         }
 
         totalScore = pickOneScore + pickTwoScore + pickThreeScore;
+        var totalScoreInt = parseInt(totalScore);
         var obj = [];
         obj["name"] = name;
         obj["pickOne"] = pickOne;
@@ -113,7 +114,7 @@ $.getJSON('https://golf.jacoduplessis.co.za/?format=json', function (data) {
         obj["pickTwoScore"] = pickTwoScore;
         obj["pickThree"] = pickThree;
         obj["pickThreeScore"] = pickThreeScore;
-        obj["score"] = totalScore;
+        obj["score"] = totalScoreInt;
         scores.push(obj);
 
     }
@@ -122,14 +123,13 @@ $.getJSON('https://golf.jacoduplessis.co.za/?format=json', function (data) {
     for (i = 0; i < picks.length; i++) {
         getScores(picks[i].name, picks[i].selections[0], picks[i].selections[1], picks[i].selections[2]);
     }
-    // getScores(picks[0].name,picks[0].selections[0], picks[0].selections[1], picks[0].selections[2]);
-    // getScores(picks[1].name,picks[1].selections[0], picks[1].selections[1], picks[1].selections[2]);
+
     for (i = 0; i < scores.length; i++) {
 
         $("#scoreboard-row").append(
             `
             <tr>
-			<td colspan="2" class="entry">${scores[i].name}</td>
+			<td colspan="2" class="entry dontsort">${scores[i].name}</td>
 			<td class="entry">${scores[i].score}</td>
 		</tr>
 		<tr class="hide-row info-row">
@@ -140,12 +140,15 @@ $.getJSON('https://golf.jacoduplessis.co.za/?format=json', function (data) {
             `
         );
     }
-
+    
+    
     $(".entry").click(function (e) {
         e.preventDefault();
         $(this).closest('tr').next().toggle("hide-row");
-
     });
-
-
+ 
+    
+    // var newTableObject = document.getElementById("#scoreboard");
+    // sorttable.makeSortable(newTableObject);
 });
+
