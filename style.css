@@ -7,15 +7,42 @@ body {
 }
 
 .table-header {
-    background-color: #04694A;
+    background-color: #04694A!important;
     color: #F7F4F0;
 }
-
+.modal {
+    position: absolute;
+    top: 000px;
+    right: 100px;
+    bottom: 0;
+    left: 0;
+    z-index: 10040;
+    overflow: auto;
+    overflow-y: auto;
+ }
 .page-header {
     height: 15vh;
     background-image: url(masters.gif);
     background-repeat: no-repeat;
     background-position: center;
+}
+.table thead th{
+    border-bottom: none;
+}
+.table th{
+    border-top: none;
+}
+
+.modal-body>.table td{
+    padding: .50rem;
+}
+
+#height{
+    height: 10px;;
+}
+
+.modal-body, .modal-footer{
+    padding: 0;
 }
 
 table.table-bordered {
@@ -45,6 +72,10 @@ table.table-bordered>tbody>tr>th {
     display: none;
 }
 
+.show-row{
+    display: table-cell;
+}
+
 .info-row {
     font-size: 10px;
     background-color: #04694A!important;
@@ -56,3 +87,22 @@ table.table-bordered>tbody>tr>th {
     background-color: #04694a
 }
 
+.rotate{
+    -moz-transition: all 1s linear;
+    -webkit-transition: all 1s linear;
+    transition: all 1s linear;
+    cursor: pointer;
+}
+
+.rotate.down{
+    -ms-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+    color: #04694A;
+    cursor: pointer;
+}
+
+.position {
+    color: black;
+}

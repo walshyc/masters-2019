@@ -1,56 +1,41 @@
 var scores = [];
-
-
-var piks = [{
-        "name": "Conor Walsh",
+var picks = [{
+        "name": "Mark Towey",
         "selections": [
-            "Jonathan Byrd",
-            "Matt Kuchar",
-            "Jonathan Byrd"
-        ]
-    },
-    {
-        "name": "Martin Clarke",
-        "selections": [
-            "Jim Furyk",
-            "Padraig Harrington",
-            "Aaron Baddeley"
-        ]
-    },
-    {
-        "name": "Brian Fahey",
-        "selections": [
-            "Jhonattan Vegas",
-            "Abraham Ancer",
-            "Martin Kaymer"
-        ]
-    },
-    {
-        "name": "Peter Dravins",
-        "selections": [
-            "Chesson Hadley",
-            "Fabián Gómez",
-            "Scott Stallings"
-        ]
+            "Brooks Koepka",
+            "Shane Lowry",
+            "Rickie Fowler"
+        ],
+        "tiebracker": "274"
     },
     {
         "name": "Gary Corbett",
         "selections": [
-            "Wyndham Clark",
-            "Hank Lebioda",
-            "Danny Lee"
-        ]
+            "Matt Kuchar",
+            "Bubba Watson",
+            "Jason Day"
+        ],
+        "tiebracker": "275"
     },
     {
-        "name": "Fergal Murphy",
+        "name": "Brian Tobin",
         "selections": [
-            "Jason Kokrak",
-            "K.J. Choi",
-            "Morgan Hoffmann"
-        ]
+            "Sergio Garcia",
+            "Dustin Johnson",
+            "Henrik Stenson"
+        ],
+        "tiebracker": "276"
+    },
+    {
+        "name": "Martin Clarke",
+        "selections": [
+            "Rory McIlroy",
+            "Tommy Fleetwood",
+            "Kevin Kisner"
+        ],
+        "tiebracker": "280"
     }
 ];
-
 
 $.getJSON('https://golf.jacoduplessis.co.za/?format=json', function (data) {
     var totalScore;
@@ -62,14 +47,17 @@ $.getJSON('https://golf.jacoduplessis.co.za/?format=json', function (data) {
 
                 if (data.Leaderboards[0].Players[a].Name === pickOne) {
                     var pickOneScore = data.Leaderboards[0].Players[a].Total;
+                    var pickOnePosition = data.Leaderboards[0].Players[a].CurrentPosition;
                 }
 
                 if (data.Leaderboards[0].Players[a].Name === pickTwo) {
                     var pickTwoScore = data.Leaderboards[0].Players[a].Total;
+                    var pickTwoPosition = data.Leaderboards[0].Players[a].CurrentPosition;
                 }
 
                 if (data.Leaderboards[0].Players[a].Name === pickThree) {
                     var pickThreeScore = data.Leaderboards[0].Players[a].Total;
+                    var pickThreePosition = data.Leaderboards[0].Players[a].CurrentPosition;
                 }
             }
         } else if (data.Leaderboards[1].Tournament == "The Masters") {
@@ -77,14 +65,17 @@ $.getJSON('https://golf.jacoduplessis.co.za/?format=json', function (data) {
 
                 if (data.Leaderboards[1].Players[a].Name === pickOne) {
                     var pickOneScore = data.Leaderboards[1].Players[a].Total;
+                    var pickOnePosition = data.Leaderboards[0].Players[a].CurrentPosition;
                 }
 
                 if (data.Leaderboards[1].Players[a].Name === pickTwo) {
                     var pickTwoScore = data.Leaderboards[1].Players[a].Total;
+                    var pickTwoPosition = data.Leaderboards[0].Players[a].CurrentPosition;
                 }
 
                 if (data.Leaderboards[1].Players[a].Name === pickThree) {
                     var pickThreeScore = data.Leaderboards[1].Players[a].Total;
+                    var pickThreePosition = data.Leaderboards[0].Players[a].CurrentPosition;
                 }
             }
         } else if (data.Leaderboards[2].Tournament == "The Masters") {
@@ -92,14 +83,17 @@ $.getJSON('https://golf.jacoduplessis.co.za/?format=json', function (data) {
 
                 if (data.Leaderboards[2].Players[a].Name === pickOne) {
                     var pickOneScore = data.Leaderboards[2].Players[a].Total;
+                    var pickOnePosition = data.Leaderboards[0].Players[a].CurrentPosition;
                 }
 
                 if (data.Leaderboards[2].Players[a].Name === pickTwo) {
                     var pickTwoScore = data.Leaderboards[2].Players[a].Total;
+                    var pickTwoPosition = data.Leaderboards[0].Players[a].CurrentPosition;
                 }
 
                 if (data.Leaderboards[2].Players[a].Name === pickThree) {
                     var pickThreeScore = data.Leaderboards[2].Players[a].Total;
+                    var pickThreePosition = data.Leaderboards[0].Players[a].CurrentPosition;
                 }
             }
         }
@@ -110,13 +104,15 @@ $.getJSON('https://golf.jacoduplessis.co.za/?format=json', function (data) {
         obj["name"] = name;
         obj["pickOne"] = pickOne;
         obj["pickOneScore"] = pickOneScore;
+        obj["pickOnePosition"] = pickOnePosition;
         obj["pickTwo"] = pickTwo;
         obj["pickTwoScore"] = pickTwoScore;
+        obj["pickTwoPosition"] = pickTwoPosition;
         obj["pickThree"] = pickThree;
         obj["pickThreeScore"] = pickThreeScore;
+        obj["pickThreePosition"] = pickThreePosition;
         obj["score"] = totalScoreInt;
         scores.push(obj);
-
     }
 
 
@@ -133,22 +129,21 @@ $.getJSON('https://golf.jacoduplessis.co.za/?format=json', function (data) {
 			<td class="entry">${scores[i].score}</td>
 		</tr>
 		<tr class="hide-row info-row">
-			<td>${scores[i].pickOne} ${scores[i].pickOneScore}</td>
-			<td>${scores[i].pickTwo} ${scores[i].pickTwoScore}</td>
-			<td>${scores[i].pickThree} ${scores[i].pickThreeScore}</td>
+			<td>${scores[i].pickOne} ${scores[i].pickOneScore}<br>Thru:${scores[i].pickOnePosition} </td>
+			<td>${scores[i].pickTwo} ${scores[i].pickTwoScore}<br>Thru:${scores[i].pickTwoPosition}</td>
+			<td>${scores[i].pickThree} ${scores[i].pickThreeScore}<br>Thru:${scores[i].pickThreePosition}</td>
 		</tr>
             `
         );
     }
-    
-    
+
+
     $(".entry").click(function (e) {
         e.preventDefault();
         $(this).closest('tr').next().toggle("hide-row");
     });
- 
-    
+
+
     // var newTableObject = document.getElementById("#scoreboard");
     // sorttable.makeSortable(newTableObject);
 });
-
