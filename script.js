@@ -1,5 +1,5 @@
 var scores = [];
-var picks = [{
+var pcks = [{
         "name": "Mark Towey",
         "selections": [
             "Brooks Koepka",

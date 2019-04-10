@@ -1,4 +1,4 @@
-var golfers = []
+var golfers = [];
 $.getJSON('https://golf.jacoduplessis.co.za/?format=json', function (data) {
 
     if (data.Leaderboards[0].Tournament == "The Masters") {
