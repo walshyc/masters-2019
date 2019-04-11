@@ -45,6 +45,86 @@ var picks = [{
             "Kevin Kisner"
         ],
         "tiebracker":"280"
+    },
+    {
+        "name": "David Joyce",
+        "short": "djoyce",
+        "selections": [
+            "Hideki Matsuyama",
+            "Rory McIlroy",
+            "Patrick Cantlay"
+        ],
+        "tiebracker":"275"
+    },
+    {
+        "name": "Finian Joyce",
+        "short": "fjoyce",
+        "selections": [
+            "Marc Leishman",
+            "Tommy Fleetwood",
+            "Matt Kuchar"
+        ],
+        "tiebracker":"280"
+    },
+    {
+        "name": "Monica Joyce",
+        "short": "mjoyce",
+        "selections": [
+            "Rory McIlroy",
+            "Paul Casey",
+            "Kevin Kisner"
+        ],
+        "tiebracker":"280"
+    },
+    {
+        "name": "Eamonn Fahey",
+        "short": "efahey1",
+        "selections": [
+            "Rory McIlroy",
+            "Kevin Kisner",
+            "Bryson DeChambeau"
+        ],
+        "tiebracker":"279"
+    },
+    {
+        "name": "Eamonn Fahey",
+        "short": "efahey2",
+        "selections": [
+            "Sergio Garcia",
+            "Tommy Fleetwood",
+            "Paul Casey"
+        ],
+        "tiebracker":"278"
+    },
+    {
+        "name": "Brian Fahey",
+        "short": "bfahey",
+        "selections": [
+            "Rory McIlroy",
+            "Tiger Woods",
+            "Danny Willett"
+        ],
+        "tiebracker":"279"
+    },
+    {
+        "name": "Peter Dravins",
+        "short": "pdravins",
+        "selections": [
+            "Dustin Johnson",
+            "Brooks Koepka",
+            "Gary Woodland"
+        ],
+        "tiebracker":"277"
+    },
+    {
+        "name": "Conor Walsh",
+        "short": "cwalsh",
+        "selections": [
+            "Rory McIlroy",
+            "Hideki Matsuyama",
+            "Lucas Bjerregaard"
+        ],
+        "tiebracker":"281"
     }
 ];
 
