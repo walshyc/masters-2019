@@ -135,6 +135,26 @@ var picks = [{
             "Cameron Smith"
         ],
         "tiebracker":"270"
+    },
+    {
+        "name": "Jimmy O'Boyle",
+        "short": "joboyle",
+        "selections": [
+            "Brooks Koepka",
+            "Tony Finau",
+            "Xander Schauffele"
+        ],
+        "tiebracker":"280"
+    },
+    {
+        "name": "Steve Jordan",
+        "short": "sjordan",
+        "selections": [
+            "Rory McIlroy",
+            "Jordan Spieth",
+            "Matthew Fitzpatrick"
+        ],
+        "tiebracker":"278"
     }
 ];
 
