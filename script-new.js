@@ -125,6 +125,16 @@ var picks = [{
             "Lucas Bjerregaard"
         ],
         "tiebracker":"281"
+    },
+    {
+        "name": "James McGauran",
+        "short": "jmcguaran",
+        "selections": [
+            "Rory McIlroy",
+            "Francesco Molinari",
+            "Cameron Smith"
+        ],
+        "tiebracker":"270"
     }
 ];
 
