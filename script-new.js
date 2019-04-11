@@ -155,6 +155,16 @@ var picks = [{
             "Matthew Fitzpatrick"
         ],
         "tiebracker":"278"
+    },
+    {
+        "name": "Gerry Walsh",
+        "short": "gwalsh",
+        "selections": [
+            "Marc Leishman",
+            "Adam Scott",
+            "Hideki Matsuyama"
+        ],
+        "tiebracker":"284"
     }
 ];
 
