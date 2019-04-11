@@ -11,7 +11,7 @@ body {
     color: #F7F4F0;
 }
 .modal {
-    position: absolute;
+    position: fixed;
     top: 000px;
     right: 100px;
     bottom: 0;
@@ -19,7 +19,7 @@ body {
     z-index: 10040;
     overflow: auto;
     overflow-y: auto;
- }
+}
 .page-header {
     height: 15vh;
     background-image: url(masters.gif);
