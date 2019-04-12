@@ -208,6 +208,7 @@ $.getJSON('https://golf.jacoduplessis.co.za/?format=json', function (data) {
                         }
                         var pickOnePosition = data.Leaderboards[x].Players[a].CurrentPosition;
                         var pickOneAfter = data.Leaderboards[x].Players[a].After;
+                        var pickOneToday = data.Leaderboards[x].Players[a].Today;                         
                     }
 
                     if (data.Leaderboards[x].Players[a].Name === pickTwo) {
@@ -218,6 +219,7 @@ $.getJSON('https://golf.jacoduplessis.co.za/?format=json', function (data) {
                         }
                         var pickTwoPosition = data.Leaderboards[x].Players[a].CurrentPosition;
                         var pickTwoAfter = data.Leaderboards[x].Players[a].After;
+                        var pickTwoToday = data.Leaderboards[x].Players[a].Today;
                     }
 
                     if (data.Leaderboards[x].Players[a].Name === pickThree) {
@@ -228,6 +230,7 @@ $.getJSON('https://golf.jacoduplessis.co.za/?format=json', function (data) {
                         }
                         var pickThreePosition = data.Leaderboards[x].Players[a].CurrentPosition;
                         var pickThreeAfter = data.Leaderboards[x].Players[a].After;
+                        var pickThreeToday = data.Leaderboards[x].Players[a].Today;
                     }
                 }
             }
@@ -242,14 +245,17 @@ $.getJSON('https://golf.jacoduplessis.co.za/?format=json', function (data) {
         obj["pickOneScore"] = pickOneScore;
         obj["pickOnePosition"] = pickOnePosition;
         obj["pickOneAfter"] = pickOneAfter;
+        obj["pickOneToday"] = pickOneToday;
         obj["pickTwo"] = pickTwo;
         obj["pickTwoScore"] = pickTwoScore;
         obj["pickTwoPosition"] = pickTwoPosition;
         obj["pickTwoAfter"] = pickTwoAfter;
+        obj["pickTwoToday"] = pickTwoToday;
         obj["pickThree"] = pickThree;
         obj["pickThreeScore"] = pickThreeScore;
         obj["pickThreePosition"] = pickThreePosition;
         obj["pickThreeAfter"] = pickThreeAfter;
+        obj["pickThreeToday"] = pickThreeToday;
         obj["score"] = totalScoreInt;
         scores.push(obj);
 
@@ -282,29 +288,37 @@ $.getJSON('https://golf.jacoduplessis.co.za/?format=json', function (data) {
                 <div class="modal-content">
                  
                   <div class="modal-body">
-                  <table class="table">
+                  <table class="table indTable">
                   <thead class="table-header">   
                   <tr>
+                            <th>Position</th>
                             <th>${scores[i].name}</th>
-                            <th>Score</th>
+                            <th>Today</th>
                             <th>Thru</th>
+                            <th data-sort="int" data-sort-onload=yes>Total</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
+                            <td>${scores[i].pickOnePosition}</td>
                             <td>${scores[i].pickOne}</td>
-                            <td>${scores[i].pickOneScore}</td>
+                            <td>${scores[i].pickOneToday}</td>
                             <td>${scores[i].pickOneAfter}</td>
+                            <td>${scores[i].pickOneScore}</td>
                         </tr>
                         <tr>
+                            <td>${scores[i].pickTwoPosition}</td>
                             <td>${scores[i].pickTwo}</td>
-                            <td>${scores[i].pickTwoScore}</td>
+                            <td>${scores[i].pickTwoToday}</td>
                             <td>${scores[i].pickTwoAfter}</td>
+                            <td>${scores[i].pickTwoScore}</td>
                         </tr>
                         <tr>
+                            <td>${scores[i].pickThreePosition}</td>
                             <td>${scores[i].pickThree}</td>
-                            <td>${scores[i].pickThreeScore}</td>
+                            <td>${scores[i].pickThreeToday}</td>
                             <td>${scores[i].pickThreeAfter}</td>
+                            <td>${scores[i].pickThreeScore}</td>
                         </tr>
                         </tbody>
                         </table>
@@ -327,6 +341,8 @@ $.getJSON('https://golf.jacoduplessis.co.za/?format=json', function (data) {
 
 
     $("#scoreboard").stupidtable();
+    $(".indTable").stupidtable();
+    
 
 
 });
