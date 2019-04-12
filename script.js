@@ -203,10 +203,12 @@ $.getJSON('https://golf.jacoduplessis.co.za/?format=json', function (data) {
                     if (data.Leaderboards[x].Players[a].Name === pickOne) {
                         if (data.Leaderboards[x].Players[a].Rounds[0] + data.Leaderboards[x].Players[a].Rounds[1] >= cutScore) {
                             var pickOneScore = (data.Leaderboards[x].Players[a].Total + 10);
+                            var pickOnePosition = "CUT";
                         } else {
                             var pickOneScore = data.Leaderboards[x].Players[a].Total;
+                            var pickOnePosition = data.Leaderboards[x].Players[a].CurrentPosition;
                         }
-                        var pickOnePosition = data.Leaderboards[x].Players[a].CurrentPosition;
+                        
                         var pickOneAfter = data.Leaderboards[x].Players[a].After;
                         var pickOneToday = data.Leaderboards[x].Players[a].Today;                         
                     }
@@ -214,10 +216,12 @@ $.getJSON('https://golf.jacoduplessis.co.za/?format=json', function (data) {
                     if (data.Leaderboards[x].Players[a].Name === pickTwo) {
                         if (data.Leaderboards[x].Players[a].Rounds[0] + data.Leaderboards[x].Players[a].Rounds[1] >= cutScore) {
                             var pickTwoScore = (data.Leaderboards[x].Players[a].Total + 10);
+                            var pickTwoPosition = "CUT";
                         } else {
                             var pickTwoScore = data.Leaderboards[x].Players[a].Total;
+                            var pickTwoPosition = data.Leaderboards[x].Players[a].CurrentPosition;
                         }
-                        var pickTwoPosition = data.Leaderboards[x].Players[a].CurrentPosition;
+                        
                         var pickTwoAfter = data.Leaderboards[x].Players[a].After;
                         var pickTwoToday = data.Leaderboards[x].Players[a].Today;
                     }
@@ -225,10 +229,12 @@ $.getJSON('https://golf.jacoduplessis.co.za/?format=json', function (data) {
                     if (data.Leaderboards[x].Players[a].Name === pickThree) {
                         if (data.Leaderboards[x].Players[a].Rounds[0] + data.Leaderboards[x].Players[a].Rounds[1] >= cutScore) {
                             var pickThreeScore = (data.Leaderboards[x].Players[a].Total + 10);
+                            var pickThreePosition = "CUT";
                         } else {
                             var pickThreeScore = data.Leaderboards[x].Players[a].Total;
+                            var pickThreePosition = data.Leaderboards[x].Players[a].CurrentPosition;
                         }
-                        var pickThreePosition = data.Leaderboards[x].Players[a].CurrentPosition;
+                        
                         var pickThreeAfter = data.Leaderboards[x].Players[a].After;
                         var pickThreeToday = data.Leaderboards[x].Players[a].Today;
                     }
