@@ -5,7 +5,7 @@ $("#refresh").click(function () {
 
 var scores = [];
 
-var cutScore =148;
+var cutScore = 148;
 
 var picks = [{
         "name": "Mark Towey",
@@ -204,39 +204,47 @@ $.getJSON('https://golf.jacoduplessis.co.za/?format=json', function (data) {
                         if (data.Leaderboards[x].Players[a].Rounds[0] + data.Leaderboards[x].Players[a].Rounds[1] >= cutScore) {
                             var pickOneScore = (data.Leaderboards[x].Players[a].Total + 10);
                             var pickOnePosition = "CUT";
+                            var pickOneAfter = "-";
+                            var pickOneToday = "-";
                         } else {
                             var pickOneScore = data.Leaderboards[x].Players[a].Total;
                             var pickOnePosition = data.Leaderboards[x].Players[a].CurrentPosition;
+                            var pickOneAfter = data.Leaderboards[x].Players[a].After;
+                            var pickOneToday = data.Leaderboards[x].Players[a].Today;
                         }
-                        
-                        var pickOneAfter = data.Leaderboards[x].Players[a].After;
-                        var pickOneToday = data.Leaderboards[x].Players[a].Today;                         
+
                     }
 
                     if (data.Leaderboards[x].Players[a].Name === pickTwo) {
                         if (data.Leaderboards[x].Players[a].Rounds[0] + data.Leaderboards[x].Players[a].Rounds[1] >= cutScore) {
                             var pickTwoScore = (data.Leaderboards[x].Players[a].Total + 10);
                             var pickTwoPosition = "CUT";
+                            var pickTwoAfter = "-";
+                            var pickTwoToday = "-";
                         } else {
                             var pickTwoScore = data.Leaderboards[x].Players[a].Total;
                             var pickTwoPosition = data.Leaderboards[x].Players[a].CurrentPosition;
+                            var pickTwoAfter = data.Leaderboards[x].Players[a].After;
+                            var pickTwoToday = data.Leaderboards[x].Players[a].Today;
                         }
-                        
-                        var pickTwoAfter = data.Leaderboards[x].Players[a].After;
-                        var pickTwoToday = data.Leaderboards[x].Players[a].Today;
+
+
                     }
 
                     if (data.Leaderboards[x].Players[a].Name === pickThree) {
                         if (data.Leaderboards[x].Players[a].Rounds[0] + data.Leaderboards[x].Players[a].Rounds[1] >= cutScore) {
                             var pickThreeScore = (data.Leaderboards[x].Players[a].Total + 10);
                             var pickThreePosition = "CUT";
+                            var pickThreeAfter = "-";
+                            var pickThreeToday = "-";
                         } else {
                             var pickThreeScore = data.Leaderboards[x].Players[a].Total;
                             var pickThreePosition = data.Leaderboards[x].Players[a].CurrentPosition;
+                            var pickThreeAfter = data.Leaderboards[x].Players[a].After;
+                            var pickThreeToday = data.Leaderboards[x].Players[a].Today;
                         }
-                        
-                        var pickThreeAfter = data.Leaderboards[x].Players[a].After;
-                        var pickThreeToday = data.Leaderboards[x].Players[a].Today;
+
+
                     }
                 }
             }
@@ -350,7 +358,7 @@ $.getJSON('https://golf.jacoduplessis.co.za/?format=json', function (data) {
 
     $("#scoreboard").stupidtable();
     $(".indTable").stupidtable();
-    
+
 
 
 });
