@@ -5,7 +5,7 @@ $("#refresh").click(function () {
 
 var scores = [];
 
-var cutScore 
+var cutScore = 148;
 
 var picks = [{
         "name": "Mark Towey",
