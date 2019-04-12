@@ -288,7 +288,8 @@ $.getJSON('https://golf.jacoduplessis.co.za/?format=json', function (data) {
                 <div class="modal-content">
                  
                   <div class="modal-body">
-                  <table class="table-responsive-new indTable">
+                  <div class="table-responsive">
+                  <table class="table indTable">
                   <thead class="table-header">   
                   <tr>
                             <th>Position</th>
@@ -322,6 +323,7 @@ $.getJSON('https://golf.jacoduplessis.co.za/?format=json', function (data) {
                         </tr>
                         </tbody>
                         </table>
+                        </div>
                     
                   </div>
                   <div class="modal-footer">

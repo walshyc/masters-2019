@@ -32,6 +32,9 @@ body {
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    border-collapse: collapse;
+    
+
 }
 .table thead th{
     border-bottom: none;
