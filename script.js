@@ -5,7 +5,7 @@ $("#refresh").click(function () {
 
 var scores = [];
 
-var cutScore 
+var cutScore =148;
 
 var picks = [{
         "name": "Mark Towey",
@@ -201,7 +201,7 @@ $.getJSON('https://golf.jacoduplessis.co.za/?format=json', function (data) {
                 for (a = 0; a < data.Leaderboards[x].Players.length; a++) {
 
                     if (data.Leaderboards[x].Players[a].Name === pickOne) {
-                        if (data.Leaderboards[x].Players[a].Rounds[x] + data.Leaderboards[x].Players[a].Rounds[1] >= cutScore) {
+                        if (data.Leaderboards[x].Players[a].Rounds[0] + data.Leaderboards[x].Players[a].Rounds[1] >= cutScore) {
                             var pickOneScore = (data.Leaderboards[x].Players[a].Total + 10);
                         } else {
                             var pickOneScore = data.Leaderboards[x].Players[a].Total;
@@ -212,7 +212,7 @@ $.getJSON('https://golf.jacoduplessis.co.za/?format=json', function (data) {
                     }
 
                     if (data.Leaderboards[x].Players[a].Name === pickTwo) {
-                        if (data.Leaderboards[x].Players[a].Rounds[x] + data.Leaderboards[x].Players[a].Rounds[1] >= cutScore) {
+                        if (data.Leaderboards[x].Players[a].Rounds[0] + data.Leaderboards[x].Players[a].Rounds[1] >= cutScore) {
                             var pickTwoScore = (data.Leaderboards[x].Players[a].Total + 10);
                         } else {
                             var pickTwoScore = data.Leaderboards[x].Players[a].Total;
@@ -223,7 +223,7 @@ $.getJSON('https://golf.jacoduplessis.co.za/?format=json', function (data) {
                     }
 
                     if (data.Leaderboards[x].Players[a].Name === pickThree) {
-                        if (data.Leaderboards[x].Players[a].Rounds[x] + data.Leaderboards[x].Players[a].Rounds[1] >= cutScore) {
+                        if (data.Leaderboards[x].Players[a].Rounds[0] + data.Leaderboards[x].Players[a].Rounds[1] >= cutScore) {
                             var pickThreeScore = (data.Leaderboards[x].Players[a].Total + 10);
                         } else {
                             var pickThreeScore = data.Leaderboards[x].Players[a].Total;
