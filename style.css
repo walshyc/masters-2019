@@ -9,6 +9,7 @@ body {
 .table-header {
     background-color: #04694A!important;
     color: #F7F4F0;
+    margin-bottom: 20px;
 }
 .modal {
     position: fixed;
