@@ -1,10 +1,11 @@
-$("#refresh").click(function() {
+$("#refresh").click(function () {
     $(this).toggleClass("down");
     window.location.reload();
 });
 
 var scores = [];
 
+var cutScore 
 
 var picks = [{
         "name": "Mark Towey",
@@ -14,7 +15,7 @@ var picks = [{
             "LOWRY, Shane",
             "FOWLER, Rickie"
         ],
-        "tiebracker":"274"
+        "tiebracker": "274"
     },
     {
         "name": "Gary Corbett",
@@ -24,7 +25,7 @@ var picks = [{
             "WATSON, Bubba",
             "DAY, Jason"
         ],
-        "tiebracker":"275"
+        "tiebracker": "275"
     },
     {
         "name": "Brian Tobin",
@@ -34,7 +35,7 @@ var picks = [{
             "JOHNSON, Dustin",
             "STENSON, Henrik"
         ],
-        "tiebracker":"276"
+        "tiebracker": "276"
     },
     {
         "name": "Martin Clarke",
@@ -44,7 +45,7 @@ var picks = [{
             "FLEETWOOD, Tommy",
             "KISNER, Kevin"
         ],
-        "tiebracker":"280"
+        "tiebracker": "280"
     },
     {
         "name": "David Joyce",
@@ -54,7 +55,7 @@ var picks = [{
             "MCILROY, Rory",
             "CANTLAY, Patrick"
         ],
-        "tiebracker":"275"
+        "tiebracker": "275"
     },
     {
         "name": "Finian Joyce",
@@ -64,7 +65,7 @@ var picks = [{
             "FLEETWOOD, Tommy",
             "KUCHAR, Matt"
         ],
-        "tiebracker":"280"
+        "tiebracker": "280"
     },
     {
         "name": "Monica Joyce",
@@ -74,7 +75,7 @@ var picks = [{
             "CASEY, Paul",
             "KISNER, Kevin"
         ],
-        "tiebracker":"280"
+        "tiebracker": "280"
     },
     {
         "name": "Eamonn Fahey",
@@ -84,7 +85,7 @@ var picks = [{
             "KISNER, Kevin",
             "DECHAMBEAU, Bryson"
         ],
-        "tiebracker":"279"
+        "tiebracker": "279"
     },
     {
         "name": "Eamonn Fahey",
@@ -94,9 +95,9 @@ var picks = [{
             "FLEETWOOD, Tommy",
             "CASEY, Paul"
         ],
-        "tiebracker":"278"
+        "tiebracker": "278"
     },
-    
+
     {
         "name": "Brian Fahey",
         "short": "bfahey",
@@ -105,7 +106,7 @@ var picks = [{
             "WOODS, Tiger",
             "WILLETT, Danny"
         ],
-        "tiebracker":"279"
+        "tiebracker": "279"
     },
     {
         "name": "Peter Dravins",
@@ -115,7 +116,7 @@ var picks = [{
             "KOEPKA, Brooks",
             "WOODLAND, Gary"
         ],
-        "tiebracker":"277"
+        "tiebracker": "277"
     },
     {
         "name": "Conor Walsh",
@@ -125,7 +126,7 @@ var picks = [{
             "MATSUYAMA, Hideki",
             "KIM, Si Woo"
         ],
-        "tiebracker":"281"
+        "tiebracker": "281"
     },
     {
         "name": "James McGauran",
@@ -135,7 +136,7 @@ var picks = [{
             "MOLINARI, Francesco",
             "SMITH, Cameron"
         ],
-        "tiebracker":"270"
+        "tiebracker": "270"
     },
     {
         "name": "Jimmy O'Boyle",
@@ -145,7 +146,7 @@ var picks = [{
             "FINAU, Tony",
             "SCHAUFFELE, Xander"
         ],
-        "tiebracker":"280"
+        "tiebracker": "280"
     },
     {
         "name": "Steve Jordan",
@@ -155,7 +156,7 @@ var picks = [{
             "SPIETH, Jordan",
             "FITZPATRICK, Matthew"
         ],
-        "tiebracker":"278"
+        "tiebracker": "278"
     },
     {
         "name": "Gerry Walsh",
@@ -165,7 +166,7 @@ var picks = [{
             "SCOTT, Adam",
             "MATSUYAMA, Hideki"
         ],
-        "tiebracker":"284"
+        "tiebracker": "284"
     },
     {
         "name": "Albert Dravins",
@@ -175,7 +176,7 @@ var picks = [{
             "KISNER, Kevin",
             "CASEY, Paul"
         ],
-        "tiebracker":"278"
+        "tiebracker": "278"
     },
     {
         "name": "Aidan Walsh",
@@ -185,7 +186,7 @@ var picks = [{
             "MOLINARI, Francesco",
             "KOEPKA, Brooks"
         ],
-        "tiebracker":"276"
+        "tiebracker": "276"
     }
 ];
 
@@ -194,69 +195,41 @@ $.getJSON('https://golf.jacoduplessis.co.za/?format=json', function (data) {
     var totalScore;
     // console.log(data.Leaderboards[1].Tournament);
 
-    function getScores(name,short, pickOne, pickTwo, pickThree) {
-        if (data.Leaderboards[0].Tour == "European Tour") {
-            for (a = 0; a < data.Leaderboards[0].Players.length; a++) {
+    function getScores(name, short, pickOne, pickTwo, pickThree) {
+        for (x = 0; x < data.Leaderboards.length; x++) {
+            if (data.Leaderboards[x].Tour == "European Tour") {
+                for (a = 0; a < data.Leaderboards[x].Players.length; a++) {
 
-                if (data.Leaderboards[0].Players[a].Name === pickOne) {
-                    var pickOneScore = data.Leaderboards[0].Players[a].Total;
-                    var pickOnePosition =data.Leaderboards[0].Players[a].CurrentPosition;
-                    var pickOneAfter =data.Leaderboards[0].Players[a].After;
+                    if (data.Leaderboards[x].Players[a].Name === pickOne) {
+                        if (data.Leaderboards[x].Players[a].Rounds[x] + data.Leaderboards[x].Players[a].Rounds[1] >= cutScore) {
+                            var pickOneScore = (data.Leaderboards[x].Players[a].Total + 10);
+                        } else {
+                            var pickOneScore = data.Leaderboards[x].Players[a].Total;
+                        }
+                        var pickOnePosition = data.Leaderboards[x].Players[a].CurrentPosition;
+                        var pickOneAfter = data.Leaderboards[x].Players[a].After;
+                    }
+
+                    if (data.Leaderboards[x].Players[a].Name === pickTwo) {
+                        if (data.Leaderboards[x].Players[a].Rounds[x] + data.Leaderboards[x].Players[a].Rounds[1] >= cutScore) {
+                            var pickTwoScore = (data.Leaderboards[x].Players[a].Total + 10);
+                        } else {
+                            var pickTwoScore = data.Leaderboards[x].Players[a].Total;
+                        }
+                        var pickTwoPosition = data.Leaderboards[x].Players[a].CurrentPosition;
+                        var pickTwoAfter = data.Leaderboards[x].Players[a].After;
+                    }
+
+                    if (data.Leaderboards[x].Players[a].Name === pickThree) {
+                        if (data.Leaderboards[x].Players[a].Rounds[x] + data.Leaderboards[x].Players[a].Rounds[1] >= cutScore) {
+                            var pickThreeScore = (data.Leaderboards[x].Players[a].Total + 10);
+                        } else {
+                            var pickThreeScore = data.Leaderboards[x].Players[a].Total;
+                        }
+                        var pickThreePosition = data.Leaderboards[x].Players[a].CurrentPosition;
+                        var pickThreeAfter = data.Leaderboards[x].Players[a].After;
+                    }
                 }
-
-                if (data.Leaderboards[0].Players[a].Name === pickTwo) {
-                    var pickTwoScore = data.Leaderboards[0].Players[a].Total;
-                    var pickTwoPosition =data.Leaderboards[0].Players[a].CurrentPosition;
-                    var pickTwoAfter =data.Leaderboards[0].Players[a].After;
-                }
-
-                if (data.Leaderboards[0].Players[a].Name === pickThree) {
-                    var pickThreeScore = data.Leaderboards[0].Players[a].Total;
-                    var pickThreePosition =data.Leaderboards[0].Players[a].CurrentPosition;
-                    var pickThreeAfter =data.Leaderboards[0].Players[a].After;
-                }
-            }
-        } else if (data.Leaderboards[1].Tour == "European Tour") {
-            for (a = 0; a < data.Leaderboards[1].Players.length; a++) {
-
-                if (data.Leaderboards[1].Players[a].Name === pickOne) {
-                    var pickOneScore = data.Leaderboards[1].Players[a].Total;
-                    var pickOnePosition = data.Leaderboards[1].Players[a].CurrentPosition;
-                    var pickOneAfter =data.Leaderboards[1].Players[a].After;
-                }
-
-                if (data.Leaderboards[1].Players[a].Name === pickTwo) {
-                    var pickTwoScore = data.Leaderboards[1].Players[a].Total;
-                    var pickTwoPosition =data.Leaderboards[1].Players[a].CurrentPosition;
-                    var pickTwoAfter =data.Leaderboards[1].Players[a].After;
-                }
-
-                if (data.Leaderboards[1].Players[a].Name === pickThree) {
-                    var pickThreeScore = data.Leaderboards[1].Players[a].Total;
-                    var pickThreePosition =data.Leaderboards[1].Players[a].CurrentPosition;
-                    var pickThreeAfter =data.Leaderboards[1].Players[a].After;
-                }
-            }
-        } else if (data.Leaderboards[2].Tour == "European Tour") {
-            for (a = 0; a < data.Leaderboards[2].Players.length; a++) {
-
-                if (data.Leaderboards[2].Players[a].Name === pickOne) {
-                    var pickOneScore = data.Leaderboards[2].Players[a].Total;
-                    var pickOnePosition = data.Leaderboards[2].Players[a].CurrentPosition;
-                    var pickOneAfter =data.Leaderboards[2].Players[a].After;
-                }
-
-                if (data.Leaderboards[2].Players[a].Name === pickTwo) {
-                    var pickTwoScore = data.Leaderboards[2].Players[a].Total;
-                    var pickTwoPosition =data.Leaderboards[2].Players[a].CurrentPosition;
-                    var pickTwoAfter =data.Leaderboards[2].Players[a].After;
-                }
-
-                if (data.Leaderboards[2].Players[a].Name === pickThree) {
-                    var pickThreeScore = data.Leaderboards[2].Players[a].Total;
-                    var pickThreePosition =data.Leaderboards[2].Players[a].CurrentPosition;
-                    var pickThreeAfter =data.Leaderboards[2].Players[a].After;
-                                }
             }
         }
 
@@ -281,7 +254,7 @@ $.getJSON('https://golf.jacoduplessis.co.za/?format=json', function (data) {
         scores.push(obj);
 
     }
-console.log(scores);
+    console.log(scores);
 
     for (i = 0; i < picks.length; i++) {
         getScores(picks[i].name, picks[i].short, picks[i].selections[0], picks[i].selections[1], picks[i].selections[2]);
@@ -298,7 +271,7 @@ console.log(scores);
                 
             
             `
-        
+
         );
 
         $("#modals").append(
@@ -347,33 +320,13 @@ console.log(scores);
             
             `
         )
-        
 
-       
+
+
     }
 
-    
+
     $("#scoreboard").stupidtable();
-    
-    // $(".entry").click(function (e) {
-    //     e.preventDefault();
-    //     $('.hide-row').slideToggle("slow");
-        
-    // });
 
- 
- 
-  
-    // var newTableObject = document.getElementById("#scoreboard");
-    // sorttable.makeSortable(newTableObject);
+
 });
-
-//<tr>
-//			<td colspan="2" class="entry dontsort">${scores[i].name}</td>
-//			<td class="entry">${scores[i].score}</td>
-//		</tr>
-//		<tr class="hide-row info-row">
-//			<td>${scores[i].pickOnePosition} ${scores[i].pickOne} ${scores[i].pickOneScore}</td>
-//			<td>${scores[i].pickTwoPosition} ${scores[i].pickTwo} ${scores[i].pickTwoScore}</td>
-//			<td>${scores[i].pickThreePosition} ${scores[i].pickThree} ${scores[i].pickThreeScore}</td>
-//		</tr>
