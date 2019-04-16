@@ -191,7 +191,7 @@ var picks = [{
 ];
 
 
-$.getJSON('https://golf.jacoduplessis.co.za/?format=json', function (data) {
+$.getJSON('masters-scores.json', function (data) {
     var totalScore;
     // console.log(data.Leaderboards[1].Tournament);
 
